@@ -1,0 +1,232 @@
+:root {
+  --bg: #060916;
+  --surface: rgba(24, 28, 56, 0.48);
+  --pink: #ff4f94;
+  --violet: #8b6bff;
+  --cyan: #3de5ff;
+  --text: #f3f5ff;
+  --muted: #bdc5f5;
+  --good: #6affb7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 15% 20%, #1a1f49, transparent 40%),
+    radial-gradient(circle at 85% 10%, #2b1158, transparent 35%),
+    radial-gradient(circle at 50% 100%, #102c48, transparent 50%), var(--bg);
+  overflow: hidden;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 0.8px, transparent 0.8px);
+  background-size: 3px 3px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.aurora {
+  position: fixed;
+  width: 70vmax;
+  height: 70vmax;
+  filter: blur(45px);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.aurora-1 {
+  background: radial-gradient(circle at center, rgba(255, 79, 148, 0.55), rgba(255, 79, 148, 0));
+  top: -30vmax;
+  left: -20vmax;
+}
+
+.aurora-2 {
+  background: radial-gradient(circle at center, rgba(61, 229, 255, 0.48), rgba(61, 229, 255, 0));
+  right: -25vmax;
+  bottom: -30vmax;
+  animation-delay: 2.5s;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 70px rgba(17, 15, 40, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.card {
+  width: min(92vw, 760px);
+  padding: clamp(1.5rem, 4vw, 2.8rem);
+  border-radius: 24px;
+  transform-style: preserve-3d;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(13, 17, 43, 0.6);
+  border: 1px solid rgba(61, 229, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.script {
+  display: block;
+  font-family: Pacifico, cursive;
+  font-weight: 400;
+  color: #ffd2eb;
+  text-shadow: 0 0 20px rgba(255, 79, 148, 0.5);
+  margin-top: 0.45rem;
+}
+
+p {
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.65;
+  max-width: 60ch;
+}
+
+.controls {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+.yes {
+  color: #090b16;
+  background: linear-gradient(110deg, #ff8dc0 0%, #ff4f94 45%, #ffd364 100%);
+  box-shadow: 0 10px 30px rgba(255, 79, 148, 0.48);
+}
+
+.no {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.status {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #e7ecff;
+  min-height: 1.5em;
+}
+
+.status.accepted {
+  color: var(--good);
+  text-shadow: 0 0 18px rgba(106, 255, 183, 0.52);
+}
+
+.status.playful {
+  color: #ffd364;
+}
+
+#heartsLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.heart {
+  position: absolute;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  opacity: 0;
+  animation: floatUp 2.8s ease forwards;
+  text-shadow: 0 0 16px rgba(255, 79, 148, 0.5);
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--x), var(--y), 0) scale(0.8) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(var(--x) + var(--drift)), calc(var(--y) - 32vh), 0) scale(1.55) rotate(24deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6vmax, -4vmax, 0) scale(1.08);
+  }
+}
+
+@media (max-width: 580px) {
+  .card {
+    border-radius: 18px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
