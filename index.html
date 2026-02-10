@@ -8,11 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap"
-    <title>Be My Valentine?</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Pacifico&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -28,14 +23,13 @@
       <main class="letter-stage">
         <h1 class="headline">A little love letter for you 💌</h1>
 
-        <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope-wrap" id="envelopeWrap" role="button" tabindex="0" aria-label="Open letter" aria-expanded="false">
           <article class="letter" id="letter">
             <div class="corner corner-left">♥</div>
             <div class="corner corner-right">♥</div>
             <p>Dear My Love,</p>
             <p>
-              You make every day brighter, softer, and warmer. So I made this tiny animated love letter just for
-              us.
+              You make every day brighter, softer, and warmer. So I made this tiny animated love letter just for us.
             </p>
             <p>
               Will you be my Valentine this Feb 14 and let me spoil you with hugs, flowers, and your favorite food?
@@ -53,44 +47,17 @@
         </div>
 
         <div class="controls">
-          <button class="btn open" id="openBtn">Open letter ✨</button>
           <button class="btn yes" id="yesBtn">Yes, I will 💞</button>
           <button class="btn no" id="noBtn">No? 🙈</button>
         </div>
 
-        <p class="status" id="status">Tap “Open letter” first…</p>
+        <p class="status" id="status">Tap the envelope to open your letter 💌</p>
       </main>
 
       <div class="floor"></div>
       <div id="burstLayer" aria-hidden="true"></div>
     </div>
 
-    <div class="noise"></div>
-    <div class="aurora aurora-1"></div>
-    <div class="aurora aurora-2"></div>
-
-    <main class="app">
-      <section class="card glass">
-        <span class="badge">Feb 14 • Special Mission</span>
-        <h1>
-          My Bangaram,
-          <span class="script">Will you be my Valentine?</span>
-        </h1>
-        <p>
-          I upgraded this request with neon vibes, soft hearts, and infinite love loops. Press yes to unlock our
-          cutest timeline.
-        </p>
-
-        <div class="controls">
-          <button class="btn yes" id="yesBtn">Yes, obviously 💖</button>
-          <button class="btn no" id="noBtn">No... maybe?</button>
-        </div>
-
-        <div id="status" class="status">Waiting for your adorable response...</div>
-      </section>
-    </main>
-
-    <div id="heartsLayer" aria-hidden="true"></div>
     <script src="script.js"></script>
   </body>
 </html>
