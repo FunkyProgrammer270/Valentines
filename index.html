@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Valentine Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scene">
+      <div class="rainbow"></div>
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="smiley smiley-a" aria-hidden="true">😊</div>
+      <div class="smiley smiley-b" aria-hidden="true">💛</div>
+      <div class="smiley smiley-c" aria-hidden="true">🌸</div>
+
+      <main class="letter-stage">
+        <h1 class="headline">A little love letter for you 💌</h1>
+
+        <div class="envelope-wrap" id="envelopeWrap">
+          <article class="letter" id="letter">
+            <div class="corner corner-left">♥</div>
+            <div class="corner corner-right">♥</div>
+            <p>Dear My Love,</p>
+            <p>
+              You make every day brighter, softer, and warmer. So I made this tiny animated love letter just for
+              us.
+            </p>
+            <p>
+              Will you be my Valentine this Feb 14 and let me spoil you with hugs, flowers, and your favorite food?
+            </p>
+            <p class="signature">Forever yours,<br />Your future Valentine 💗</p>
+          </article>
+
+          <div class="envelope" aria-hidden="true">
+            <div class="flap flap-back"></div>
+            <div class="flap flap-left"></div>
+            <div class="flap flap-right"></div>
+            <div class="flap flap-front"></div>
+            <div class="seal">💖</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn open" id="openBtn">Open letter ✨</button>
+          <button class="btn yes" id="yesBtn">Yes, I will 💞</button>
+          <button class="btn no" id="noBtn">No? 🙈</button>
+        </div>
+
+        <p class="status" id="status">Tap “Open letter” first…</p>
+      </main>
+
+      <div class="floor"></div>
+      <div id="burstLayer" aria-hidden="true"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
