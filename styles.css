@@ -2,7 +2,6 @@
   --pink-bg: #fde8f6;
   --gold: #ffd66b;
   --ink: #373246;
-  --rose: #ff5da2;
 }
 
 * {
@@ -425,6 +424,6 @@ body::before {
   }
 
   .envelope-wrap.open .letter {
-    transform: translate(-50%, -120px) scale(1);
+    transform: translate(-50%, -120px);
   }
 }
