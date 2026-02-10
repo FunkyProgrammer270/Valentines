@@ -22,76 +22,29 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = "burst";
       item.textContent = pieces[Math.floor(Math.random() * pieces.length)];
 
-      const x = `${Math.random() * 100}vw`;
-      const y = `${82 + Math.random() * 16}vh`;
-      const dx = `${(Math.random() - 0.5) * 35}vw`;
+  noBtn.style.position = "fixed";
+  noBtn.style.left = `${Math.max(10, Math.random() * maxX)}px`;
+  noBtn.style.top = `${Math.max(10, Math.random() * maxY)}px`;
+});
 
-      item.style.setProperty("--x", x);
-      item.style.setProperty("--y", y);
-      item.style.setProperty("--dx", dx);
-      item.style.animationDelay = `${Math.random() * 0.55}s`;
+noBtn.addEventListener("click", () => {
+  noClicks += 1;
 
-      burstLayer.appendChild(item);
-      item.addEventListener("animationend", () => item.remove());
-    }
-  };
+  const lines = [
+    "That button is shy today 🙈",
+    "Hmm... maybe your smile means yes? 😊",
+    "Counter-offer: I bring flowers + dessert? 🌹🍰",
+    "Okay okay, I heard a tiny yes 💗",
+  ];
 
-  const moveNoButton = () => {
-    if (!opened) {
-      return;
-    }
+  statusEl.textContent = lines[(noClicks - 1) % lines.length];
+  statusEl.className = "status no-state";
+  shower(16);
 
-    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-
-    noBtn.style.position = "fixed";
-    noBtn.style.left = `${Math.max(10, Math.random() * maxX)}px`;
-    noBtn.style.top = `${Math.max(10, Math.random() * maxY)}px`;
-  };
-
-  openBtn.addEventListener("click", () => {
-    opened = true;
-    envelopeWrap.classList.add("open");
-    statusEl.textContent = "Letter opened. Read it, then choose my favorite answer 💞";
-    statusEl.className = "status";
-    shower(18);
-    openBtn.textContent = "Opened 💌";
-  });
-
-  yesBtn.addEventListener("click", () => {
-    if (!opened) {
-      statusEl.textContent = "Open the letter first, pretty please ✨";
-      statusEl.className = "status";
-      return;
-    }
-
-    statusEl.textContent = "YAY!! Best Feb 14 ever. Date mode activated 💕";
-    statusEl.className = "status yes-state";
-    yesBtn.textContent = "My Valentine 🥹💖";
-    shower(45);
-  });
-
-  noBtn.addEventListener("mouseenter", moveNoButton);
-  noBtn.addEventListener("touchstart", moveNoButton, { passive: true });
-
-  noBtn.addEventListener("click", () => {
-    noClicks += 1;
-
-    const lines = [
-      "That button is shy today 🙈",
-      "Hmm... maybe your smile means yes? 😊",
-      "Counter-offer: I bring flowers + dessert? 🌹🍰",
-      "Okay okay, I heard a tiny yes 💗",
-    ];
-
-    statusEl.textContent = lines[(noClicks - 1) % lines.length];
-    statusEl.className = "status no-state";
-    shower(16);
-
-    if (noClicks >= 3) {
-      noBtn.textContent = "Maybe yes? 😅";
-    }
-  });
+  if (noClicks >= 3) {
+    noBtn.textContent = "Maybe yes? 😅";
+  }
+});
 
   shower(16);
 });
